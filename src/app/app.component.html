@@ -1,0 +1,51 @@
+<div class="header">header</div>
+
+<section class="page container">
+    <h1 #titleH1 [tabIndex]="tabIndex" (blur)="resetTabIndex()">{{ pageTitle }}</h1>
+
+    <div class="page__product__info">
+        <div class="page__product__info-picture">
+            <img [src]="productImg" [alt]="pageTitle" aria-hidden="true" />
+        </div>
+
+        <div class="page__product__info-description">
+            <p>Vendido e entregue por: KaBuM! | Em estoque</p>
+            <div>
+                <p>R$ 1.399,99</p>
+
+                <button>
+                    <span class="material-symbols-outlined" aria-hidden="true"> shopping_cart </span>
+                    comprar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion" (click)="toggleAccordion()" [attr.aria-expanded]="expandAccordion">
+        <div class="accordion__title">
+            <h2>DESCRIÇÃO DO PRODUTO</h2>
+            <span class="material-symbols-outlined" aria-hidden="true"> {{ arrowIcon }} </span>
+        </div>
+
+        <div class="accordion__content" *ngIf="expandAccordion">
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga eum impedit alias eaque nihil reiciendis harum delectus nam ipsam sapiente, vitae
+                id commodi esse odio sequi vero aliquid veniam ab.
+            </p>
+        </div>
+    </button>
+
+    <div class="quantity" style="display: flex; gap: 5px">
+        <span class="sr-only" *ngIf="showAy11Alert" role="alert">{{ message }}</span>
+
+        <button (click)="decreaseAmountProducts()" aria-label="remover" [disabled]="!amountProducts">
+            <span class="material-symbols-outlined" aria-hidden="true">remove</span>
+        </button>
+
+        <p>{{ amountProducts }}</p>
+
+        <button (click)="increaseAmountProducts()" aria-label="adicionar">
+            <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        </button>
+    </div>
+</section>
